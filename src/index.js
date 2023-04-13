@@ -4,8 +4,15 @@ import {useSelector} from 'react-redux';
 import AppNavigator from './navigation';
 import {styles} from './themes';
 import CSafeAreaView from './components/common/CSafeAreaView';
+import {LogBox} from 'react-native';
+import  {useEffect} from 'react';
+import "./ignoreWarnings";
 
 const App = () => {
+useEffect(() => {
+
+LogBox.ignoreAllLogs(true)
+  }, []);
   const colors = useSelector(state => state.theme.theme);
 
   return (
