@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import AppNavigator from './navigation';
 import {styles} from './themes';
 import CSafeAreaView from './components/common/CSafeAreaView';
-
+import "./ignoreWarnings";
 const App = () => {
   const colors = useSelector(state => state.theme.theme);
 

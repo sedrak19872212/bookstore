@@ -56,7 +56,8 @@ const RenderFooterItem = React.memo(() => {
   const onPressMostPopular = () => navigation.navigate(StackNav.MostPopular);
 
   return (
-    <View style={styles.mv30}>
+  <View></View>
+    /*<View style={styles.mv30}>
       <SubHeader
         title1={strings.mostPopular}
         title2={strings.seeAll}
@@ -64,7 +65,7 @@ const RenderFooterItem = React.memo(() => {
       />
       <MostPopularCategory />
       <HomeProductComponent />
-    </View>
+    </View>*/
   );
 });
 
@@ -104,7 +105,7 @@ export default function HomeTab({navigation}) {
         </View>
         <CText
           type="b16"
-          numberOfLines={1}
+          numberOfLines={2}
           align={'center'}
           color={colors.primaryTextColor}
           style={styles.mt10}>
@@ -121,7 +122,7 @@ export default function HomeTab({navigation}) {
         extraData={extraData}
         renderItem={renderCategoryItem}
         keyExtractor={(item, index) => index.toString()}
-        numColumns={4}
+        numColumns={3}
         estimatedItemSize={10}
         ListHeaderComponent={<RenderHeaderItem />}
         ListFooterComponent={<RenderFooterItem />}
@@ -149,7 +150,7 @@ const localStyles = StyleSheet.create({
   },
   categoryRoot: {
     width: '100%',
-    height: getHeight(100),
+    height: getHeight(150),
     ...styles.itemsCenter,
     ...styles.mt40,
   },

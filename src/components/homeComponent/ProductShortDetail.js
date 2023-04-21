@@ -55,10 +55,11 @@ export default function ProductShortDetail(props) {
           <CText type={'s12'}>{item?.sold + ' ' + strings.sold}</CText>
         </View>
       </View>
-      <CText type={'b16'}>{item?.price}</CText>
+      <CText type={'b16'}>${item?.price}</CText>
     </TouchableOpacity>
   );
 }
+
 
 const localStyles = StyleSheet.create({
   productContainer: {

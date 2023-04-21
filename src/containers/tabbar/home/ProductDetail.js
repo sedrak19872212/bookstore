@@ -31,8 +31,6 @@ import images from '../../../assets/images';
 import strings from '../../../i18n/strings';
 import CDivider from '../../../components/common/CDivider';
 import CButton from '../../../components/common/CButton';
-import SizeComponent from '../../../components/homeComponent/SizeComponent';
-import ColorComponent from '../../../components/homeComponent/ColorComponent';
 import {StackNav} from '../../../navigation/NavigationKeys';
 
 export default function ProductDetail({navigation, route}) {
@@ -53,7 +51,7 @@ export default function ProductDetail({navigation, route}) {
 
   const onPressReview = () => navigation.navigate(StackNav.Reviews);
 
-  return (
+   return (
     <CSafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <ImageBackground
@@ -66,7 +64,7 @@ export default function ProductDetail({navigation, route}) {
         </ImageBackground>
         <View style={styles.mh20}>
           <View style={localStyles.productText}>
-            <CText style={styles.flex} numberOfLines={1} type={'b26'}>
+            <CText style={styles.flex} numberOfLines={2} type={'b26'}>
               {item?.product}
             </CText>
             <TouchableOpacity onPress={onPressLike}>
@@ -105,16 +103,27 @@ export default function ProductDetail({navigation, route}) {
             </TouchableOpacity>
           </View>
           <CDivider />
+
           <CText numberOfLines={1} type={'b18'}>
             {strings.description}
           </CText>
           <CText style={styles.mt5} type={'r14'}>
-            {strings.descText}
+            {item?.descText}
           </CText>
-          <View style={localStyles.sizeColorContainer}>
-            {!!item?.size?.length && <SizeComponent data={item?.size} />}
-            <ColorComponent isSize={!item?.size?.length} />
-          </View>
+
+
+
+           <CDivider />
+
+          <CText numberOfLines={1} type={'b18'}>
+                      {strings.author}
+          </CText>
+          <CText style={styles.mt5} type={'r14'}>
+                      {item?.author}
+          </CText>
+
+
+
           <View style={localStyles.quantityContainer}>
             <CText type={'b18'}>{strings.quantity}</CText>
             <View
@@ -156,7 +165,7 @@ export default function ProductDetail({navigation, route}) {
               color={colors.dark ? colors.grayScale3 : colors.grayScale6}>
               {strings.totalPrice}
             </CText>
-            <CText type={'b20'}>{item?.price}</CText>
+            <CText type={'b20'}>${(item?.price*quantity).toFixed(2)}</CText>
           </View>
           <CButton
             type={'b16'}
@@ -221,7 +230,7 @@ const localStyles = StyleSheet.create({
     ...styles.rowSpaceBetween,
   },
   addToCartContainer: {
-    width: deviceWidth / 2 + moderateScale(30),
+    width: deviceWidth / 2 + moderateScale(5),
     ...styles.shadowStyle,
   },
   priceContainer: {

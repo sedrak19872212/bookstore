@@ -48,24 +48,19 @@ export default function CartProductComponent(props) {
             </TouchableOpacity>
           )}
         </View>
+
+
+
+
         <View style={localStyles.subItemStyle}>
-          <View
-            style={[
-              localStyles.circleContainer,
-              {backgroundColor: item?.color},
-            ]}
-          />
-          <CText type={'s12'}>
-            {strings.color} {' |  '}
-          </CText>
-          {!!item?.size && (
-            <CText type={'s12'}>
-              {strings.size + ' = ' + item?.size}
-              {'  |  '}
-            </CText>
-          )}
-          <CText type={'s12'}>{strings.qty + ' = 1'}</CText>
+
+        <CText type={'s12'}>Author{item?.author}</CText>
+
         </View>
+
+
+
+
         <View style={localStyles.btnContainer}>
           <CText type={'b16'}>{item?.price}</CText>
           {isTrash ? (

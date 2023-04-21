@@ -1,3 +1,4 @@
+
 import {Image, StyleSheet, View} from 'react-native';
 import React, {memo} from 'react';
 import SwiperFlatList from 'react-native-swiper-flatlist';

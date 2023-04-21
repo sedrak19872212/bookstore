@@ -48,24 +48,40 @@ export default function ProductOrderComponent(props) {
         <CText style={styles.flex} numberOfLines={1} type={'b16'}>
           {item?.product}
         </CText>
+
+
+
+
+
+
+
+
         <View style={[localStyles.subItemStyle, !isCategory && styles.mv15]}>
+
+
           <View
             style={[
               localStyles.circleContainer,
               {backgroundColor: item?.color},
             ]}
           />
-          <CText type={'s12'}>
-            {strings.color} {' |  '}
-          </CText>
+
+
           {!!item?.size && (
             <CText type={'s12'}>
               {strings.size + ' = ' + item?.size}
               {'  |  '}
             </CText>
           )}
+
+
           <CText type={'s12'}>{strings.qty + ' = 1'}</CText>
         </View>
+
+
+
+
+
         {!!isCategory && (
           <View
             style={[
