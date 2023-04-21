@@ -11,7 +11,7 @@ if (__DEV__) {
     "Non-serializable values were found in the navigation state.",
     "VirtualizedLists should never be nested inside plain ScrollViews",
     "FlashList only supports padding related props and backgroundColor in contentContainerStyle.",
-    "FlashList's rendered size is not usable. Either the height or width is too small (<2px)."
+    "FlashList's rendered size is not usable. Either the height or width is too small (<2px).",
   ];
 
   const warn = console.warn;
