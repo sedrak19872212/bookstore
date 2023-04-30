@@ -28,9 +28,14 @@ import TrashItem from '../../../components/models/TrashItem';
 
 export default function CartTab({navigation}) {
   const colors = useSelector(state => state.theme.theme);
+
+  const items = useSelector(state => state.cart.itemsInCart);
+  const totalPrice = items.reduce((acc, book) => acc += book?.price, 0)
+
+
   const trashSheetRef = useRef(null);
   const [trashData, setTrashData] = useState({});
-  const [cartData, setCartData] = useState(onGoingData);
+  const [cartData, setCartData] = useState(items);
 
   const onPressSearch = () => navigation.navigate(StackNav.Search);
   const onPressTrash = item => {
@@ -94,7 +99,7 @@ export default function CartTab({navigation}) {
                 color={colors.dark ? colors.grayScale3 : colors.grayScale6}>
                 {strings.totalPrice}
               </CText>
-              <CText type={'b20'}>{'$1256.00'}</CText>
+              <CText type={'b20'}>{'$1000'}</CText>
             </View>
             <CButton
               type={'b16'}

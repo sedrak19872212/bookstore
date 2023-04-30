@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
+
+import {useDispatch} from 'react-redux';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Custom Imports
@@ -33,11 +36,24 @@ import CDivider from '../../../components/common/CDivider';
 import CButton from '../../../components/common/CButton';
 import {StackNav} from '../../../navigation/NavigationKeys';
 
+import {addInCartAction} from '../../../redux/action/addInCartAction';
+
 export default function ProductDetail({navigation, route}) {
   const item = route?.params?.item;
   const colors = useSelector(state => state.theme.theme);
   const [isLiked, setIsLiked] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
+
+
+  const dispatch = useDispatch();
+
+  const onPressAddToCart = (e) => {
+    e.stopPropagation();
+    dispatch(addInCartAction(e));
+  }
+
+
 
   const onPressLike = () => setIsLiked(!isLiked);
 
@@ -173,6 +189,7 @@ export default function ProductDetail({navigation, route}) {
             style={styles.ml10}
             containerStyle={localStyles.addToCartContainer}
             frontIcon={colors.dark ? <Cart_Light /> : <Cart_Dark />}
+            onPress={onPressAddToCart}
           />
         </View>
       </View>

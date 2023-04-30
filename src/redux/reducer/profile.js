@@ -12,6 +12,6 @@ export default function (state = INITIAL_STATE, action) {
         language: action.payload,
       };
     default:
-      return state;
+          return state;
   }
 }

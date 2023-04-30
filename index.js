@@ -8,6 +8,8 @@ import {name as appName} from './app.json';
 import App from './src';
 import store from './src/redux/store';
 
+
+
 const RNRoot = () => {
   return (
     <Provider store={store}>
