@@ -48,12 +48,9 @@ export default function ProductDetail({navigation, route}) {
 
   const dispatch = useDispatch();
 
-  const onPressAddToCart = (e) => {
-    e.stopPropagation();
-    dispatch(addInCartAction(e));
+  const onPressAddToCart = (item) => {
+    dispatch(addInCartAction(item));
   }
-
-
 
   const onPressLike = () => setIsLiked(!isLiked);
 
@@ -189,7 +186,7 @@ export default function ProductDetail({navigation, route}) {
             style={styles.ml10}
             containerStyle={localStyles.addToCartContainer}
             frontIcon={colors.dark ? <Cart_Light /> : <Cart_Dark />}
-            onPress={onPressAddToCart}
+            onPress={() => onPressAddToCart(item)}
           />
         </View>
       </View>

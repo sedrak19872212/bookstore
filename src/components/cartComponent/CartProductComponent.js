@@ -62,7 +62,7 @@ export default function CartProductComponent(props) {
 
 
         <View style={localStyles.btnContainer}>
-          <CText type={'b16'}>{item?.price}</CText>
+          <CText type={'b16'}>${(item?.price*quantity).toFixed(2)}</CText>
           {isTrash ? (
             <View
               style={[

@@ -29,9 +29,16 @@ import TrashItem from '../../../components/models/TrashItem';
 export default function CartTab({navigation}) {
   const colors = useSelector(state => state.theme.theme);
 
-  const items = useSelector(state => state.cart.itemsInCart);
-  const totalPrice = items.reduce((acc, book) => acc += book?.price, 0)
+  /*const items = useSelector(state => state.cart.setItemInCart);
+  const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);*/
 
+/*const items = useSelector(state => console.log('ssssssssssssssssssssssssss',state));*/
+ /* const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);*/
+
+const items = useSelector(state => state.cart.itemsInCart);
+console.log('mmmmmmmmmmmmmmmmmmitems',items);
+const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);
+console.log('ppppppppppppppppppppprice',totalPrice)
 
   const trashSheetRef = useRef(null);
   const [trashData, setTrashData] = useState({});
@@ -99,7 +106,7 @@ export default function CartTab({navigation}) {
                 color={colors.dark ? colors.grayScale3 : colors.grayScale6}>
                 {strings.totalPrice}
               </CText>
-              <CText type={'b20'}>{'$1000'}</CText>
+              <CText type={'b20'}>${(totalPrice).toFixed(2)}</CText>
             </View>
             <CButton
               type={'b16'}

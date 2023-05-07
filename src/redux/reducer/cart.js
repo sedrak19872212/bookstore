@@ -8,14 +8,22 @@ const INITIAL_STATE = {
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADD_ITEM_IN_CART:
-      return {
+    /*return [
+    ...state,
+    action.data
+    ]*/
+   return {
+            ...state,
+            setItemInCart: state.itemsInCart.push(action.data),
+          };
+     /* return {
         ...state,
-        itemsInCart: state.itemsInCart.push(action.payload),
-      };
+        setItemInCart: state.itemsInCart.push(action.payload),
+      };*/
     case DELETE_ITEM_FROM_CART:
       return {
       ...state,
-         itemsInCart : state.itemsInCart = state.itemsInCart.filter(book => book.id !== action.payload),
+         deleteItemFromCart : state.itemsInCart = state.itemsInCart.filter(book => book.id !== action.payload),
       };
     default:
       return state;
