@@ -2,6 +2,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {useSelector} from 'react-redux';
+
+import {useDispatch} from 'react-redux';
+
 import ActionSheet from 'react-native-actions-sheet';
 
 // Local import
@@ -13,13 +16,22 @@ import CButton from '../common/CButton';
 import CDivider from '../common/CDivider';
 import CartProductComponent from '../cartComponent/CartProductComponent';
 
+import {deleteFromCartAction} from '../../redux/action/deleteFromCartAction';
+
 export default function TrashItem(props) {
   const {SheetRef, item} = props;
   const colors = useSelector(state => state.theme.theme);
 
-  const onPressCancel = () => SheetRef?.current?.hide();
 
-  const onPressYes = () => SheetRef?.current?.hide();
+  const dispatch = useDispatch();
+
+  const onPressYes = (item) => {
+  console.log("on Press Yes",item);
+   dispatch(deleteFromCartAction(item));
+  };
+
+
+  const onPressCancel = () => SheetRef?.current?.hide();
 
   return (
     <ActionSheet
@@ -55,7 +67,7 @@ export default function TrashItem(props) {
           title={strings.yesRemove}
           type={'S16'}
           containerStyle={localStyles.skipBtnContainer}
-          onPress={onPressYes}
+          onPress={() => onPressYes(item)}
         />
       </View>
     </ActionSheet>

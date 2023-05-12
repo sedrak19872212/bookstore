@@ -54,7 +54,7 @@ export default function CartProductComponent(props) {
 
         <View style={localStyles.subItemStyle}>
 
-        <CText type={'s12'}>Author{item?.author}</CText>
+        <CText type={'s12'}>Author {item?.author}</CText>
 
         </View>
 

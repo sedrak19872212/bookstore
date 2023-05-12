@@ -49,6 +49,7 @@ export default function ProductDetail({navigation, route}) {
   const dispatch = useDispatch();
 
   const onPressAddToCart = (item) => {
+  console.log("on Press Add To Cart");
     dispatch(addInCartAction(item));
   }
 

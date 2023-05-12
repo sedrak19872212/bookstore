@@ -29,14 +29,9 @@ import TrashItem from '../../../components/models/TrashItem';
 export default function CartTab({navigation}) {
   const colors = useSelector(state => state.theme.theme);
 
-  /*const items = useSelector(state => state.cart.setItemInCart);
-  const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);*/
-
-/*const items = useSelector(state => console.log('ssssssssssssssssssssssssss',state));*/
- /* const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);*/
 
 const items = useSelector(state => state.cart.itemsInCart);
-console.log('mmmmmmmmmmmmmmmmmmitems',items);
+console.log('state items',items);
 const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);
 console.log('ppppppppppppppppppppprice',totalPrice)
 
