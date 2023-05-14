@@ -29,8 +29,9 @@ import {
 } from '../../assets/svgs';
 
 export default function TabBarNavigation() {
-  const colors = useSelector(state => state.theme.theme);
-  const Tab = createBottomTabNavigator();
+    const colors = useSelector(state => state.theme.theme);
+    const Tab = createBottomTabNavigator();
+    const cartItems = useSelector(state => state.cart.itemsInCart);
 
   const TabText = memo(({IconType, label, focused}) => (
     <View style={localStyle.tabViewContainer}>
@@ -83,6 +84,7 @@ export default function TabBarNavigation() {
       <Tab.Screen
         name={TabNav.CartTab}
         component={TabRoute.CartTab}
+        initialParams={{ cartItems: cartItems}}
         options={{
           tabBarIcon: ({focused}) => (
             <TabText

@@ -790,7 +790,7 @@ const homeCategoryData = [
     title: strings.category2,
     data: [
       {
-        id: 1,
+        id: 7,
         product: 'Do No Harm',
         descText: 'Perfect reading for all fans of The Chain and Falling, Do No Harm is a compulsive, edge-of-the-seat thriller about a surgeon forced to murder a patient in order to save her son from a ruthless kidnapper.',
         price: 16.24,
@@ -802,7 +802,7 @@ const homeCategoryData = [
         sold: '7,483',
       },
       {
-        id: 2,
+        id: 8,
         product: 'The Romantic',
         descText: 'The author of Any Human Heart guides readers expertly through the richly imagined life of a fictional nineteenth century figure, tracing his passage from adventurer and bankrupt to African explorer and minor diplomat in perfectly crafted, immersive prose.',
         price: 16.24,
@@ -814,7 +814,7 @@ const homeCategoryData = [
         sold: '6.4k',
       },
       {
-        id: 3,
+        id: 9,
         product: 'No Plan B - Jack Reacher',
         descText: 'The third scintillating Jack Reacher thriller co-written by Lee Child and his younger brother Andrew finds our charismatic hero probing the expansive conspiracy behind an apparent suicide.',
         price: 16.24,
@@ -826,7 +826,7 @@ const homeCategoryData = [
         sold: '4.6k',
       },
       {
-        id: 4,
+        id: 10,
         product: 'Bad Actors',
         descText: 'The eighth Slough House thriller finds Jackson Lamb embroiled in double dealing and the hunt for a missing agent as the rest of the slow horses add their own distinctively chaotic magic to the mix.',
         price: 14.61,
@@ -838,7 +838,7 @@ const homeCategoryData = [
         sold: '11.3k',
       },
       {
-        id: 5,
+        id: 11,
         product: 'French Braid',
         descText: 'The Pulitzer Prize-winning, Booker Prize-shortlisted author of Redhead by the Side of the Road returns with a luminous new novel that paints a joyous and painfully truthful portrait of family life.',
         price: 16.24,
@@ -850,7 +850,7 @@ const homeCategoryData = [
         sold: '3642',
       },
       {
-        id: 6,
+        id: 12,
         product: 'Bleeding Heart Yard',
         descText: 'From the author of the Ruth Galloway series comes a gripping crime thriller featuring D.I. Harbinder Kaur, as a school reunion turns deadly for a police officer involved in a murder three decades previously.',
         price: 16.24,
@@ -869,7 +869,7 @@ const homeCategoryData = [
     title: strings.category3,
     data: [
       {
-        id: 1,
+        id: 13,
         product: 'Mini Leather BagIt Ends With Us',
         descText: "Heartbreaking and exquisitely written, Hoover’s touching novel of desire, lost loves and second chances focuses on a brilliantly realised love triangle and how we must always live with the ghosts of the past.",
         price: 27.61,
@@ -881,7 +881,7 @@ const homeCategoryData = [
         sold: '9,546',
       },
       {
-        id: 2,
+        id: 14,
         product: 'In a Thousand Different Ways',
         descText: "Written with Ahern's characteristic insight and compassion, In a Thousand Different Ways recounts the story of Alice - a woman struggling under the weight of a multitude of conflicting emotions.",
         price: 32.50,
@@ -893,7 +893,7 @@ const homeCategoryData = [
         sold: '6.4k',
       },
       {
-        id: 3,
+        id: 15,
         product: 'Simply Lies',
         descText: 'The crime thriller maestro spins the enthralling cat-and-mouse story of a former Jersey City cop and single mother hunting down a female sociopath who never leaves any trace of her true identity.',
         price: 32.50,
@@ -905,7 +905,7 @@ const homeCategoryData = [
         sold: '4.6k',
       },
       {
-        id: 4,
+        id: 16,
         product: 'Romantic Comedy: Signed Edition',
         descText: 'The bestselling author of Rodham and American Wife returns with an enthralling, humorous and subversive tale set in the world of a live TV comedy show, as a script writer who has given up on romance finds her world upended by an unexpected encounter.',
         price: 27.61,
@@ -917,7 +917,7 @@ const homeCategoryData = [
         sold: '11.3k',
       },
       {
-        id: 5,
+        id: 17,
         product: 'Close to Home',
         descText: 'At once knife-sharp, tender and powerfully moving, Magee’s debut is a striking tale of poverty, love and trauma told through the lens of two working-class brothers in post-conflict Belfast.',
         price: 24.35,
@@ -929,7 +929,7 @@ const homeCategoryData = [
         sold: '3642',
       },
       {
-        id: 6,
+        id: 18,
         product: 'The Lock-Up',
         descText: "As Strafford and Quirke investigate the supposed suicide of a woman found in a lock-up, suspicions turn to foul play in this unputdownable instalment of Banville's celebrated literary crime series.",
         price: 27.61,
@@ -949,7 +949,7 @@ const homeCategoryData = [
     title: strings.category4,
     data: [
       {
-        id: 1,
+        id: 19,
         product: 'The God Desire',
         descText: "Matching the intelligence and nuance of his bestselling Jews Don't Count, the comedian and author explores his keen desire to believe in a deity and why this very desperation to believe proves his atheism correct.",
         price: 16.24,
@@ -961,7 +961,7 @@ const homeCategoryData = [
         sold: '7,884',
       },
       {
-        id: 2,
+        id: 20,
         product: 'Spare',
         descText: 'In the most eagerly-awaited memoir of 2023, Prince Harry tells his version of the story about the tragic death of his mother Princess Diana, life within the Royal Family and his marriage to Meghan, Duchess of Sussex, with remarkable candour and directness.',
         price: 45.50,
@@ -973,7 +973,7 @@ const homeCategoryData = [
         sold: '4.4k',
       },
       {
-        id: 3,
+        id: 21,
         product: 'The Survivor',
         descText: 'Deeply harrowing and inspiring in equal measure, this profound Holocaust memoir tells the story of Josef Lewkowicz – a survivor of six of the most notorious concentration camps who after the war helped to bring some of the worst Nazi criminals to justice.',
         price: 32.50,
@@ -985,7 +985,7 @@ const homeCategoryData = [
         sold: '10.3k',
       },
       {
-        id: 4,
+        id: 22,
         product: 'Killing Thatcher',
         descText: 'Drawing from extensive research and told with journalistic verve, this compelling book from the Guardian’s Ireland correspondent unravels the events before and after the IRA’s attempt to assassinate Margaret Thatcher and members of her government in Brighton in 1984.',
         price: 40.63,
@@ -997,7 +997,7 @@ const homeCategoryData = [
         sold: '4.6k',
       },
       {
-        id: 5,
+        id: 23,
         product: 'The Earth Transformed',
         descText: 'Wide-ranging, topical and revelatory, this monumental account from the author of The Silk Roads of how the natural world has shaped human history sheds fascinating new light on both today’s climate crisis and the epochal shifts of the past.',
         price: 48.75,
@@ -1009,7 +1009,7 @@ const homeCategoryData = [
         sold: '4.8k',
       },
       {
-        id: 6,
+        id: 24,
         product: 'Our King: Charles III',
         descText: 'Renowned royal correspondent Robert Jobson details the life of the enigmatic king, posing searching questions about how the experiences of his life have prepared him to rule as sovereign.',
         price: 35.75,
@@ -1029,7 +1029,7 @@ const homeCategoryData = [
     title: strings.category5,
     data: [
       {
-        id: 1,
+        id: 25,
         product: 'Dog Man 11: Twenty Thousand Fleas Under the Sea',
         descText: 'In another riotously funny and original Dog Man adventure, our canine crusader confronts the dastardly Piggy and his latest plot to sabotage the Supa Buddies and the city.',
         price: 21.11,
@@ -1041,7 +1041,7 @@ const homeCategoryData = [
         sold: '7,543',
       },
       {
-        id: 2,
+        id: 26,
         product: 'The Cats We Meet Along the Way',
         descText: 'With the world due to end imminently, Aisha and her brilliantly drawn family undertake an eventful road trip across Malaysia to find her estranged sister June in this blazingly original and wonderfully affecting debut.',
         price: 12.99,
@@ -1053,7 +1053,7 @@ const homeCategoryData = [
         sold: '2.4k',
       },
       {
-        id: 3,
+        id: 27,
         product: 'A Good Girl’s Guide to Murder',
         descText: 'A compelling murder mystery that follows in the footsteps of the genre-busting One of Us is Lying, Jackson’s impressively accomplished debut features a likeable teenage sleuth out to crack a cold case as part of her homework assignment. Twists, shocks and red herrings are liberally strewn about the plot, but the thrills and spills are never allowed to overshadow the novel’s tender central relationship. ',
         price: 14.61,
@@ -1065,7 +1065,7 @@ const homeCategoryData = [
         sold: '7.3k',
       },
       {
-        id: 4,
+        id: 28,
         product: 'Shatter Me - Shatter Me',
         descText: 'Stranger Things meets Shadow and Bone in this first instalment of an epic and romantic YA fantasy series - perfect for fans of Leigh Bardugo, Sarah J. Maas and Victoria Aveyard. Now a TikTok phenomenon.',
         price: 14.61,
@@ -1077,7 +1077,7 @@ const homeCategoryData = [
         sold: '2365',
       },
       {
-        id: 5,
+        id: 29,
         product: 'Murder Most Unladylike',
         descText: 'The first instalment of the hugely popular Wells and Wong detective stories for children, Stevens’s note-perfect pastiche of Golden Age crime mysteries is a brilliantly realised and compelling boarding school adventure. ',
         price: 12.99,
@@ -1089,7 +1089,7 @@ const homeCategoryData = [
         sold: '4.8k',
       },
       {
-        id: 6,
+        id: 30,
         product: 'Harry Potter and the Philosopher’s Stone',
         descText: 'Twenty-five years ago, a wide-eyed young wizard was first drawn into an old-fashioned battle between good and evil. From Muggles to Quidditch, Hogwarts to Diagon Alley, the magical journey that launched a billion young readers feels just as fresh, fun and meticulously rendered today.',
         price: 12.99,
@@ -1108,7 +1108,7 @@ const homeCategoryData = [
     title: strings.category6,
     data: [
       {
-        id: 1,
+        id: 31,
         product: 'A House for Alice: Signed Edition',
         descText: 'Set in the harrowing aftermath of the Grenfell tragedy, this powerful and moving novel from the author of Ordinary People follows the titular protagonist and her three daughters, as they search for a place Alice would be happy to call her last home.',
         price: 30.86,
@@ -1120,7 +1120,7 @@ const homeCategoryData = [
         sold: '6,328',
       },
       {
-        id: 2,
+        id: 32,
         product: 'Greek Lessons: Signed Edition',
         descText: 'The acclaimed author of The Vegetarian delivers a spellbinding exploration of grief, intimacy and the power of language, as a student who has lost her voice and her teacher who is losing his sight begin a journey out of silence and darkness together.',
         price: 27.61,
@@ -1132,7 +1132,7 @@ const homeCategoryData = [
         sold: '5.573',
       },
       {
-        id: 3,
+        id: 33,
         product: 'Go as a River',
         descText: "With echoes of Where the Crawdads Sing, Read's hypnotic debut traces the path of a lifetime in lyrical prose as young Torie Nash absorbs the transformative words of a mysterious stranger.",
         price: 27.61,
@@ -1144,7 +1144,7 @@ const homeCategoryData = [
         sold: '8.2k',
       },
       {
-        id: 4,
+        id: 34,
         product: 'The House of Whispers',
         descText: "Both deliciously sinister gothic melodrama and nuanced comment on extremism and prejudice, this 1930s-set chiller from the author of The Clockwork Girl focuses on strange goings on in a Rome residence under Mussolini's Fascist rule.",
         price: 24.36,
@@ -1156,7 +1156,7 @@ const homeCategoryData = [
         sold: '4.6k',
       },
       {
-        id: 5,
+        id: 35,
         product: 'Silver in the Bone',
         descText: 'Arthurian legend meets The Lord of the Rings as a pair of rival crypt-robbers face deadly danger trying to retrieve an enchanted ring in this compelling dark fantasy from the author of Lore.',
         price: 27.61,
@@ -1168,7 +1168,7 @@ const homeCategoryData = [
         sold: '4.8k',
       },
       {
-        id: 6,
+        id: 36,
         product: 'On the Savage Side',
         descText: 'A moving, haunting tale of sisterly love and creeping evil from the author of the acclaimed Betty, this evocative page-turner based on true events finds two women questioning the games of their past as female corpses begin to appear in their rural Ohio town.',
         price: 27.61,

@@ -12,7 +12,6 @@ export default function (state = INITIAL_STATE, action) {
     ...state,
     action.data
     ]*/
-    console.log("add reducer, action data", action.data)
 
    return {
             ...state,

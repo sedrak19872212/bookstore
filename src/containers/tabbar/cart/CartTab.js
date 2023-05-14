@@ -1,5 +1,5 @@
 // Library Imports
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useRef, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {FlashList} from '@shopify/flash-list';
@@ -85,10 +85,10 @@ console.log('ppppppppppppppppppppprice',totalPrice)
       />
       {!!cartData && cartData.length ? (
         <View style={localStyles.root}>
-          <FlashList
-            data={cartData}
+          <FlatList
+            data={items}
             renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(item, index) => item.id}
             showsVerticalScrollIndicator={false}
             bounces={false}
             contentContainerStyle={localStyles.contentContainerStyle}
