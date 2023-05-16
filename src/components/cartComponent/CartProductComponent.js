@@ -1,7 +1,7 @@
 // Library Imports
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Custom Imports
@@ -10,19 +10,24 @@ import {deviceWidth, getHeight, moderateScale} from '../../common/constants';
 import {styles} from '../../themes';
 import strings from '../../i18n/strings';
 import {TrashDark, TrashLight} from '../../assets/svgs';
+import {incrementQuantityAction} from "../../redux/action/incrementQuantityAction";
+import {decrementQuantityAction} from "../../redux/action/decrementQuantityAction";
+
 
 export default function CartProductComponent(props) {
   const {item, isTrash = false, trashIcon = true, onPressTrash} = props;
   const colors = useSelector(state => state.theme.theme);
-  const [quantity, setQuantity] = useState(1);
 
-  const onPressRemove = () => {
-    if (quantity > 1) {
-      setQuantity(prev => prev - 1);
-    }
+  const dispatch = useDispatch();
+
+  const onPressAdd = (item) => {
+    console.log('increment',item);
+    dispatch(incrementQuantityAction(item));
+  }
+  const onPressRemove = (item) => {
+    console.log('decrement',item);
+    dispatch(decrementQuantityAction(item));
   };
-
-  const onPressAdd = () => setQuantity(prev => prev + 1);
 
   return (
     <View
@@ -62,7 +67,7 @@ export default function CartProductComponent(props) {
 
 
         <View style={localStyles.btnContainer}>
-          <CText type={'b16'}>${(item?.price*quantity).toFixed(2)}</CText>
+          <CText type={'b16'}>${(item?.price*item?.quantity).toFixed(2)}</CText>
           {isTrash ? (
             <View
               style={[
@@ -73,7 +78,8 @@ export default function CartProductComponent(props) {
                 type={'b14'}
                 align={'center'}
                 style={localStyles.quantityText}>
-                {quantity}
+               {/* {quantity}*/}
+                {item?.quantity}
               </CText>
             </View>
           ) : (
@@ -82,7 +88,7 @@ export default function CartProductComponent(props) {
                 localStyles.quantityButton,
                 {backgroundColor: colors.dark3},
               ]}>
-              <TouchableOpacity onPress={onPressRemove}>
+              <TouchableOpacity onPress={() => onPressRemove(item)}>
                 <Ionicons
                   name={'remove'}
                   size={moderateScale(18)}
@@ -94,13 +100,14 @@ export default function CartProductComponent(props) {
                 type={'b14'}
                 align={'center'}
                 style={localStyles.quantityText}>
-                {quantity}
+              {/* {quantity}*/}
+                {item?.quantity}
               </CText>
-              <TouchableOpacity onPress={onPressAdd}>
+              <TouchableOpacity onPress={() => onPressAdd(item)}>
                 <Ionicons
                   name={'add'}
                   size={moderateScale(18)}
-                  color={colors.dark ? colors.white : colors.black}
+                   color={colors.dark ? colors.white : colors.black}
                   style={styles.ml5}
                 />
               </TouchableOpacity>

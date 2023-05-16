@@ -28,6 +28,7 @@ export default function TrashItem(props) {
   const onPressYes = (item) => {
   console.log("on Press Yes",item);
    dispatch(deleteFromCartAction(item));
+      SheetRef?.current?.hide();
   };
 
 

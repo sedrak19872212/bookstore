@@ -32,7 +32,8 @@ export default function CartTab({navigation}) {
 
 const items = useSelector(state => state.cart.itemsInCart);
 console.log('state items',items);
-const totalPrice = items.reduce((acc, book) => acc += book?.price, 0);
+/*const totalPrice = 0;*/
+const totalPrice = items.reduce((acc, book) => acc += book?.price*book?.quantity, 0);
 console.log('ppppppppppppppppppppprice',totalPrice)
 
   const trashSheetRef = useRef(null);

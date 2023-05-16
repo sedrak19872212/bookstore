@@ -50,7 +50,11 @@ export default function ProductDetail({navigation, route}) {
 
   const onPressAddToCart = (item) => {
   console.log("on Press Add To Cart");
-    dispatch(addInCartAction(item));
+  const newItem = {
+    ...item,
+    quantity: quantity
+  }
+    dispatch(addInCartAction(newItem));
   }
 
   const onPressLike = () => setIsLiked(!isLiked);

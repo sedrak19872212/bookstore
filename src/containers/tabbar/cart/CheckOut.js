@@ -161,10 +161,12 @@ const RenderFlashListFooter = () => {
 };
 
 export default function CheckOut({navigation, route}) {
-  const cartData = route?.params?.cartData;
+    const cartData = useSelector(state => state.cart.itemsInCart);
+  /*const cartData = route?.params?.cartData;*/
   const colors = useSelector(state => state.theme.theme);
 
   const onPressPayment = () =>
+
     navigation.navigate(StackNav.Payment, {
       title: strings.paymentMethods,
       desc: strings.paymentDesc1,
