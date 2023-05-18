@@ -8,14 +8,17 @@ import {useSelector} from 'react-redux';
 import {styles} from '../../themes';
 import {deviceWidth, getHeight, moderateScale} from '../../common/constants';
 
-const HomeBanner = ({image}) => {
+const HomeBanner = ({images}) => {
+
   const colors = useSelector(state => state.theme.theme);
+
+
   const renderSwiperItem = ({item}) => {
     return (
       <View style={localStyles.swiperItemContainer}>
         <Image
           resizeMode="cover"
-          source={image}
+          source={item}
           style={[
             localStyles.swiperImageStyle,
             {
@@ -29,9 +32,10 @@ const HomeBanner = ({image}) => {
     );
   };
 
+
   return (
     <SwiperFlatList
-      data={[1, 2, 3]}
+      data={images}
       autoplay
       autoplayDelay={2}
       autoplayLoop

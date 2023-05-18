@@ -11,13 +11,35 @@ export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
       case ADD_ITEM_IN_CART:
           console.log('rrrrrrreducer',action.data);
-          /*    let newCartProduct;
+
+          if(state.itemsInCart.find(p => p.id === action.data.id)){
+              newCartProduct = state.itemsInCart.map(product => {
+                  if (product.id === action.data.id) {
+                      return {
+                          ...product,
+                          quantity: product.quantity + action.data.quantity
+                      }
+                  }
+                  return product;
+              });
+              return {
+                  ...state,
+                  itemsInCart: newCartProduct,
+              };
+          }else{
+              return {
+                  ...state,
+                  setItemInCart: state.itemsInCart.push(action.data),
+              };
+          }
+
+          let newCartProduct;
              if(state.itemsInCart.length > 0) {
-                newCartProduct = state.itemsInCart.map(product => {
+                 newCartProduct = state.itemsInCart.map(product => {
                      if (product.id === action.data.id) {
                          return {
                              ...product,
-                             quantity: product.quantity + 1
+                             quantity: product.quantity + action.data.quantity
                          }
                      }
                      return {
@@ -28,13 +50,13 @@ export default function (state = INITIAL_STATE, action) {
                  newCartProduct = action.data;
              }
 
-             console.log('nnnnnnnnnnnnNewCaretProduct',newCartProduct);*/
+             console.log('nnnnnnnnnnnnNewCaretProduct',newCartProduct);
       return {
-           /* ...state,
+            ...state,
           itemsInCart: newCartProduct,
-          setItemInCart: state.itemsInCart.push(newCartProduct),*/
-          ...state,
-            setItemInCart: state.itemsInCart.push(action.data),
+          /*setItemInCart: state.itemsInCart.push(newCartProduct),*/
+         /* ...state,
+            setItemInCart: state.itemsInCart.push(action.data),*/
           };
     case DELETE_ITEM_FROM_CART:
     console.log("delete reducer, action data", action.data)

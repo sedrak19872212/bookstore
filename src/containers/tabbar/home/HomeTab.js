@@ -31,8 +31,13 @@ const RenderHeaderItem = React.memo(() => {
 
   const onSearchInput = useCallback(text => setSearch(text), []);
 
-  const bannerImage = useMemo(() => {
-    return colors.dark ? images.swiperImageDark1 : images.swiperImageLight1;
+  const bannerImages = useMemo(() => {
+    return [
+        colors.dark ?images.swiperImageDark1 : images.swiperImageLight1,
+        colors.dark ?images.swiperImageDark2 : images.swiperImageLight2,
+        colors.dark ?images.swiperImageDark3 : images.swiperImageLight3,
+        colors.dark ?images.swiperImageDark4 : images.swiperImageLight4,
+    ]
   }, [colors]);
 
   return (
@@ -45,7 +50,7 @@ const RenderHeaderItem = React.memo(() => {
         onPressSeeAll={onPressSpecialOffer}
         style={styles.mt5}
       />
-      <HomeBanner image={bannerImage} />
+      <HomeBanner images={bannerImages} />
     </View>
   );
 });

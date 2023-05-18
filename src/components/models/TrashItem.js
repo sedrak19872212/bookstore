@@ -52,7 +52,7 @@ export default function TrashItem(props) {
       </CText>
       <CDivider style={styles.mv5} />
       <View style={styles.mb15}>
-        <CartProductComponent item={item} trashIcon={false} isButton={false} />
+        <CartProductComponent item={item} isTrash={true} trashIcon={false} isButton={false} />
       </View>
       <CDivider style={styles.mv5} />
       <View style={localStyles.btnContainer}>
