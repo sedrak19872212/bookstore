@@ -7,6 +7,8 @@ import Cart_Dark from '../../assets/svgs/inboxDark.svg';
 import CartInActive from '../../assets/svgs/inboxInActive.svg';
 import Order_Dark from '../../assets/svgs/discoverDark.svg';
 import Order_Light from '../../assets/svgs/discoverLight.svg';
+import CartDark from '../../assets/svgs/discoverDark.svg';
+import CartLight from '../../assets/svgs/discoverLight.svg';
 import OrderInActive from '../../assets/svgs/discoverInActive.svg';
 import Wallet_Light from '../../assets/svgs/walletLight.svg';
 import Wallet_Dark from '../../assets/svgs/walletDark.svg';
@@ -91,6 +93,8 @@ import OrderModalDark from './orderModalDark.svg';
 import OrderModalLight from './orderModalLight.svg';
 
 export {
+  CartDark,
+  CartLight,
   Home_Light,
   Cart_Light,
   Order_Light,

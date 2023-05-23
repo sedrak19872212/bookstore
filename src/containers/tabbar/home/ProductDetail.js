@@ -27,8 +27,6 @@ import CText from '../../../components/common/CText';
 import {
   Cart_Dark,
   Cart_Light,
-  LikeWithBg,
-  UnLikeWithBg,
 } from '../../../assets/svgs';
 import images from '../../../assets/images';
 import strings from '../../../i18n/strings';
@@ -41,9 +39,8 @@ import {addInCartAction} from '../../../redux/action/addInCartAction';
 export default function ProductDetail({navigation, route}) {
   const item = route?.params?.item;
   const colors = useSelector(state => state.theme.theme);
-  const [isLiked, setIsLiked] = useState(false);
-  const [quantity, setQuantity] = useState(1);
 
+  const [quantity, setQuantity] = useState(1);
 
 
   const dispatch = useDispatch();
@@ -56,8 +53,6 @@ export default function ProductDetail({navigation, route}) {
   }
     dispatch(addInCartAction(newItem));
   }
-
-  const onPressLike = () => setIsLiked(!isLiked);
 
   const onPressRemove = () => {
     if (quantity > 1) {
@@ -85,19 +80,7 @@ export default function ProductDetail({navigation, route}) {
             <CText style={styles.flex} numberOfLines={2} type={'b26'}>
               {item?.product}
             </CText>
-            <TouchableOpacity onPress={onPressLike}>
-              {isLiked ? (
-                <LikeWithBg
-                  width={moderateScale(28)}
-                  height={moderateScale(28)}
-                />
-              ) : (
-                <UnLikeWithBg
-                  width={moderateScale(28)}
-                  height={moderateScale(28)}
-                />
-              )}
-            </TouchableOpacity>
+
           </View>
           <View style={localStyles.subItemStyle}>
             <View

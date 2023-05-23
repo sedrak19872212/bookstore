@@ -25,13 +25,9 @@ import Gender from '../containers/auth/Gender';
 import AddAddress from '../containers/tabbar/profile/AddAddress';
 import AddNewCard from '../containers/tabbar/profile/AddNewCard';
 import Address from '../containers/tabbar/profile/Address';
-import HelpCenter from '../containers/tabbar/profile/HelpCenter';
-import Language from '../containers/tabbar/profile/Language';
 import NotificationSetting from '../containers/tabbar/profile/NotificationSetting';
 import Payment from '../containers/tabbar/profile/Payment';
-import PrivacyPolicy from '../containers/tabbar/profile/PrivacyPolicy';
 import Security from '../containers/tabbar/profile/Security';
-import InviteFriends from '../containers/tabbar/profile/InviteFriends';
 import CustomerService from '../containers/tabbar/profile/CustomerService';
 import EReceipt from '../containers/tabbar/wallet/EReceipt';
 import TopUpEWallet from '../containers/tabbar/wallet/TopUpEWallet';
@@ -79,13 +75,9 @@ export const StackRoute = {
   AddAddress,
   AddNewCard,
   Address,
-  HelpCenter,
-  Language,
   NotificationSetting,
   Payment,
-  PrivacyPolicy,
   Security,
-  InviteFriends,
   CustomerService,
   EReceipt,
   TopUpEWallet,

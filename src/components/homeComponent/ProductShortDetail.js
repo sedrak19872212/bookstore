@@ -1,21 +1,33 @@
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 // Custom Imports
 import CText from '../common/CText';
 import images from '../../assets/images';
-import {LikeWithBg, UnLikeWithBg} from '../../assets/svgs';
+import {CartDark, CartLight} from '../../assets/svgs';
 import {deviceWidth, moderateScale} from '../../common/constants';
 import {styles} from '../../themes';
 import strings from '../../i18n/strings';
+import {addInCartAction} from "../../redux/action/addInCartAction";
 
 export default function ProductShortDetail(props) {
   const colors = useSelector(state => state.theme.theme);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isCart, setIsCart] = useState(false);
   const {item, index, onPress} = props;
 
-  const onPressLike = () => setIsLiked(!isLiked);
+
+    const dispatch = useDispatch();
+
+  const onPressCart = () => {
+        setIsCart(!isCart);
+      console.log("on Press Add like llllllllllllllllllllllll");
+      const newItem = {
+          ...item,
+          quantity: 1
+      }
+      dispatch(addInCartAction(newItem));
+  }
 
   return (
     <TouchableOpacity
@@ -25,9 +37,7 @@ export default function ProductShortDetail(props) {
         localStyles.productContainer,
         index % 2 === 0 ? styles.mr5 : styles.ml5,
       ]}>
-      <TouchableOpacity style={localStyles.likeContainer} onPress={onPressLike}>
-        {isLiked ? <LikeWithBg /> : <UnLikeWithBg />}
-      </TouchableOpacity>
+
       <Image
         source={item?.productImage}
         style={[
@@ -39,23 +49,25 @@ export default function ProductShortDetail(props) {
         {item?.product}
       </CText>
       <View style={localStyles.subItemStyle}>
-        <Image
-          source={images.starFill}
-          style={[localStyles.starStyle, {tintColor: colors.textColor}]}
-        />
+
+          <View
+              style={[localStyles.paidContainer, {backgroundColor: colors.dark3}]}>
+              <CText type={'b14'}>${item?.price}</CText>
+          </View>
+
         <CText
           type={'s14'}
           style={styles.mr5}
           color={colors.dark ? colors.grayScale3 : colors.grayScale7}>
-          {item?.rating}
           {'  | '}
         </CText>
-        <View
-          style={[localStyles.paidContainer, {backgroundColor: colors.dark3}]}>
-          <CText type={'s12'}>{item?.sold + ' ' + strings.sold}</CText>
-        </View>
+
+          <TouchableOpacity  onPress={onPressCart}>
+              {colors.dark ? (isCart ? <CartLight /> : <CartDark />) : (isCart ? <CartDark /> : <CartLight />)}
+          </TouchableOpacity>
+
+
       </View>
-      <CText type={'b16'}>${item?.price}</CText>
     </TouchableOpacity>
   );
 }

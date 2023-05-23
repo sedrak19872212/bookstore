@@ -37,30 +37,27 @@ export default function StackNavigation() {
         component={StackRoute.AddNewCard}
       />
       <Stack.Screen name={StackNav.Address} component={StackRoute.Address} />
-      <Stack.Screen
+     {/* <Stack.Screen
         name={StackNav.HelpCenter}
         component={StackRoute.HelpCenter}
-      />
-      <Stack.Screen name={StackNav.Language} component={StackRoute.Language} />
+      />*/}
+     {/* <Stack.Screen name={StackNav.Language} component={StackRoute.Language} />*/}
       <Stack.Screen
         name={StackNav.NotificationSetting}
         component={StackRoute.NotificationSetting}
       />
       <Stack.Screen name={StackNav.Payment} component={StackRoute.Payment} />
-      <Stack.Screen
+     {/* <Stack.Screen
         name={StackNav.PrivacyPolicy}
         component={StackRoute.PrivacyPolicy}
-      />
+      />*/}
       <Stack.Screen name={StackNav.Security} component={StackRoute.Security} />
       <Stack.Screen
         name={StackNav.CreateNewPassword}
         component={StackRoute.CreateNewPassword}
       />
       <Stack.Screen name={StackNav.SetPin} component={StackRoute.SetPin} />
-      <Stack.Screen
-        name={StackNav.InviteFriends}
-        component={StackRoute.InviteFriends}
-      />
+
       <Stack.Screen
         name={StackNav.CustomerService}
         component={StackRoute.CustomerService}
