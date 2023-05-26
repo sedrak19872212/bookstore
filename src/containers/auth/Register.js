@@ -1,9 +1,8 @@
 // Library Imports
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
-import React, {memo, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import React, {memo, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 // Local Imports
 import strings from '../../i18n/strings';
 import {styles} from '../../themes';
@@ -11,6 +10,11 @@ import CText from '../../components/common/CText';
 import {ACCESS_TOKEN, getHeight, moderateScale} from '../../common/constants';
 import CHeader from '../../components/common/CHeader';
 import CSafeAreaView from '../../components/common/CSafeAreaView';
+
+import {  createUserWithEmailAndPassword, signInWithEmailAndPassword , updateProfile } from "firebase/auth";
+
+import { auth } from '../../database/firebase';
+
 import {
   Google_Icon,
   Facebook_Icon,
@@ -23,6 +27,8 @@ import KeyBoardAvoidWrapper from '../../components/common/KeyBoardAvoidWrapper';
 import {validateEmail, validatePassword} from '../../utils/validators';
 import CButton from '../../components/common/CButton';
 import {setAsyncStorageData} from '../../utils/helpers';
+
+import {currentUserAddAction} from '../../redux/action/currentUserAddAction';
 
 const Register = ({navigation}) => {
   const colors = useSelector(state => state.theme.theme);
@@ -52,10 +58,15 @@ const Register = ({navigation}) => {
     },
   ];
 
+  const [fullName, setFullName] = useState('');
+
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
   const [passwordError, setPasswordError] = React.useState('');
+
+  const [fullNameInputStyle, setFullNameInputStyle] = useState(BlurredStyle);
+
   const [emailIcon, setEmailIcon] = React.useState(BlurredIconStyle);
   const [passwordIcon, setPasswordIcon] = React.useState(BlurredIconStyle);
   const [isSubmitDisabled, setIsSubmitDisabled] = React.useState(true);
@@ -82,6 +93,8 @@ const Register = ({navigation}) => {
       setIsSubmitDisabled(true);
     }
   }, [email, password, emailError, passwordError]);
+
+  const onChangedFullName = text => setFullName(text);
 
   const onChangedEmail = val => {
     const {msg} = validateEmail(val.trim());
@@ -110,18 +123,51 @@ const Register = ({navigation}) => {
       </TouchableOpacity>
     );
   });
-  const onPressSignWithPassword = async () => {
-    await setAsyncStorageData(ACCESS_TOKEN, 'access_token');
-    navigation.reset({
-      index: 0,
-      routes: [
-        {
-          name: StackNav.SetUpProfile,
-          params: {title: strings.fillYourProfile},
-        },
-      ],
-    });
-  };
+
+  const dispatch = useDispatch();
+  const currentUserAdd = (user)=> {
+    console.log("onPresssssssssssssssss",user)
+    dispatch(currentUserAddAction(user));
+  }
+
+   const onPressSignWithPassword = async (e) => {
+      e.preventDefault();
+
+      await createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+          updateProfile(auth.currentUser, {
+            displayName: fullName
+          }).then(() => {
+            console.log('profile', auth.currentUser);
+            currentUserAdd(auth.currentUser);
+            navigation.reset({
+              index: 0,
+              routes: [{name: StackNav.TabBar}],
+            });
+
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+          //  console.log(user);
+
+
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
+            // ..
+        });
+
+
+    }
+
+
+  const onFocusFullName = () => onFocusInput(setFullNameInputStyle);
+  const onBlurFullName = () => onBlurInput(setFullNameInputStyle);
 
   const onPressPasswordEyeIcon = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -179,6 +225,21 @@ const Register = ({navigation}) => {
           <CText type={'b46'} align={'left'} style={styles.mv40}>
             {strings.createYourAccount}
           </CText>
+
+          <CInput
+              placeHolder={strings.fullName}
+              _value={fullName}
+              autoCapitalize={'none'}
+              toGetTextFieldValue={onChangedFullName}
+              inputContainerStyle={[
+                {backgroundColor: colors.inputBg},
+                localStyles.inputContainerStyle,
+                fullNameInputStyle,
+              ]}
+              _onFocus={onFocusFullName}
+              onBlur={onBlurFullName}
+          />
+
           <CInput
             placeHolder={strings.email}
             keyBoardType={'email-address'}
@@ -217,7 +278,7 @@ const Register = ({navigation}) => {
             rightAccessory={() => <RightPasswordEyeIcon />}
           />
 
-          <TouchableOpacity
+         {/* <TouchableOpacity
             onPress={() => setIsCheck(!isCheck)}
             style={localStyles.checkboxContainer}>
             <Ionicons
@@ -228,7 +289,7 @@ const Register = ({navigation}) => {
             <CText type={'s14'} style={styles.mh10}>
               {strings.rememberMe}
             </CText>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
 
           <CButton
             title={strings.signUp}
@@ -246,9 +307,7 @@ const Register = ({navigation}) => {
                 {backgroundColor: colors.bColor},
               ]}
             />
-            <CText type={'s18'} style={styles.mh10}>
-              {strings.orContinueWith}
-            </CText>
+
             <View
               style={[
                 localStyles.orContainer,
@@ -257,11 +316,7 @@ const Register = ({navigation}) => {
             />
           </View>
 
-          <View style={localStyles.socialBtnContainer}>
-            {socialIcon.map((item, index) => (
-              <RenderSocialBtn item={item} key={index.toString()} />
-            ))}
-          </View>
+
 
           <TouchableOpacity
             onPress={onPressSignIn}

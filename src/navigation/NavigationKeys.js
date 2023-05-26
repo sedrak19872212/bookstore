@@ -25,7 +25,6 @@ export const StackNav = {
   Privacy: 'Privacy',
   PrivacyPolicy: 'PrivacyPolicy',
   HelpCenter: 'HelpCenter',
-  Security: 'Security',
   Language: 'Language',
   Birthday: 'Birthday',
   Gender: 'Gender',

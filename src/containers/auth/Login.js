@@ -216,7 +216,7 @@ const Login = ({navigation}) => {
             rightAccessory={() => <RightPasswordEyeIcon />}
           />
 
-          <TouchableOpacity
+          {/*<TouchableOpacity
             onPress={() => setIsCheck(!isCheck)}
             style={localStyles.checkboxContainer}>
             <Ionicons
@@ -227,7 +227,7 @@ const Login = ({navigation}) => {
             <CText type={'s14'} style={styles.mh10}>
               {strings.rememberMe}
             </CText>
-          </TouchableOpacity>
+          </TouchableOpacity>*/}
 
           <CButton
             title={strings.signIn}
@@ -256,9 +256,7 @@ const Login = ({navigation}) => {
                 {backgroundColor: colors.bColor},
               ]}
             />
-            <CText type={'s18'} style={styles.mh10}>
-              {strings.orContinueWith}
-            </CText>
+
             <View
               style={[
                 localStyles.orContainer,
@@ -267,11 +265,7 @@ const Login = ({navigation}) => {
             />
           </View>
 
-          <View style={localStyles.socialBtnContainer}>
-            {socialIcon.map((item, index) => (
-              <RenderSocialBtn item={item} key={index.toString()} />
-            ))}
-          </View>
+
 
           <TouchableOpacity
             onPress={onPressSignUp}

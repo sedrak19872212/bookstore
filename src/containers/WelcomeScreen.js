@@ -12,7 +12,7 @@ export default function WelcomeScreen({navigation}) {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate(StackNav.onBoarding);
+      navigation.navigate(StackNav.Auth);
     }, 3000);
   }, []);
 
@@ -28,10 +28,10 @@ export default function WelcomeScreen({navigation}) {
           {'Welcome to 👋'}
         </CText>
         <CText color={colors.white} type={'B66'}>
-          {'Ecomark'}
+          {'Bookstore'}
         </CText>
         <CText style={styles.mt15} color={colors.white} type={'R18'}>
-          {'The best e-commerce app of the century for your daily needs!'}
+          {'We have the best books!'}
         </CText>
       </View>
     </View>

@@ -52,16 +52,16 @@ export default Connect = ({navigation}) => {
         {strings.letsYouIn}
       </CText>
 
-      <SocialBtn
+     {/* <SocialBtn
         title={strings.continueWithFacebook}
         frontIcon={<Facebook_Icon />}
         // onPress={() => Alert.alert('Facebook Login')}
-      />
-      <SocialBtn
+      />*/}
+     {/* <SocialBtn
         title={strings.continueWithGoogle}
         frontIcon={<Google_Icon />}
         // onPress={() => Alert.alert('Google Login')}
-      />
+      />*/}
 
       {!!isIOS && (
         <SocialBtn
@@ -71,7 +71,7 @@ export default Connect = ({navigation}) => {
         />
       )}
 
-      <View style={localStyles.divider}>
+      {/*<View style={localStyles.divider}>
         <View
           style={[localStyles.orContainer, {backgroundColor: colors.bColor}]}
         />
@@ -82,7 +82,7 @@ export default Connect = ({navigation}) => {
           style={[localStyles.orContainer, {backgroundColor: colors.bColor}]}
         />
       </View>
-
+*/}
       <CButton
         title={strings.signWithPassword}
         type={'S16'}

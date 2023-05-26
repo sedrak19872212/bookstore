@@ -14,28 +14,38 @@ import {
 import CText from '../common/CText';
 import {moderateScale} from '../../common/constants';
 import {StackNav} from '../../navigation/NavigationKeys';
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+import images from '../../assets/images';
 
 function HomeHeader() {
   const navigation = useNavigation();
   const colors = useSelector(state => state.theme.theme);
+
+  const fullName = useSelector(state => state.user.user.displayName)
 
   const onPressNotification = () => navigation.navigate(StackNav.Notification);
   const onPressLike = () => navigation.navigate(StackNav.MyWishlist);
 
   return (
     <View style={localStyles.headerContainer}>
-      <Image
+
+        <Image
+            source={images.user}
+            style={localStyles.userImageStyle}
+        />
+      {/*<Image
         source={{
           uri: 'https://images.unsplash.com/photo-1619895862022-09114b41f16f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHVzZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60',
         }}
         style={localStyles.userImageStyle}
-      />
+      />*/}
       <View style={localStyles.textContainer}>
         <CText type="m16" numberOfLines={1} color={colors.primaryTextColor}>
           {'Good Morning 👋'}
         </CText>
         <CText type="B20" numberOfLines={1} color={colors.primaryTextColor}>
-          {'Andrew Ainsley'}
+          {/*{'Andrew Ainsley'}*/}{fullName}
         </CText>
       </View>
       <View style={styles.rowCenter}>
