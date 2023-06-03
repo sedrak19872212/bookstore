@@ -12,6 +12,7 @@ import {useSelector} from 'react-redux';
 import {useDispatch} from 'react-redux';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useToast} from "react-native-toast-notifications";
 
 // Custom Imports
 import CSafeAreaView from '../../../components/common/CSafeAreaView';
@@ -42,8 +43,8 @@ export default function ProductDetail({navigation, route}) {
 
   const [quantity, setQuantity] = useState(1);
 
-
   const dispatch = useDispatch();
+  const toast = useToast();
 
   const onPressAddToCart = (item) => {
   console.log("on Press Add To Cart");
@@ -52,6 +53,13 @@ export default function ProductDetail({navigation, route}) {
     quantity: quantity
   }
     dispatch(addInCartAction(newItem));
+
+    toast.show("Successfully added to cart",{
+      type:'success',
+      placement: "top",
+      duration: 2000,
+      animationType: "zoom-in",
+    });
   }
 
   const onPressRemove = () => {

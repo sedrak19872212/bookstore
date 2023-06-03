@@ -1,8 +1,10 @@
 // Library Imports
 import {StyleSheet, View, TouchableOpacity} from 'react-native';
 import React, {memo, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { auth } from '../../database/firebase';
 
 // Local Imports
 import strings from '../../i18n/strings';
@@ -23,6 +25,8 @@ import {validateEmail, validatePassword} from '../../utils/validators';
 import KeyBoardAvoidWrapper from '../../components/common/KeyBoardAvoidWrapper';
 import {setAsyncStorageData} from '../../utils/helpers';
 import CButton from '../../components/common/CButton';
+import {currentUserAddAction} from "../../redux/action/currentUserAddAction";
+import {useToast} from "react-native-toast-notifications";
 
 const Login = ({navigation}) => {
   const colors = useSelector(state => state.theme.theme);
@@ -70,6 +74,12 @@ const Login = ({navigation}) => {
   const onFocusIcon = onHighlight => onHighlight(FocusedIconStyle);
   const onBlurInput = onUnHighlight => onUnHighlight(BlurredStyle);
   const onBlurIcon = onUnHighlight => onUnHighlight(BlurredIconStyle);
+  const toast = useToast();
+
+  const dispatch = useDispatch();
+  const currentUserAdd = (user)=> {
+    dispatch(currentUserAddAction(user));
+  }
 
   useEffect(() => {
     if (
@@ -153,8 +163,32 @@ const Login = ({navigation}) => {
     </TouchableOpacity>
   );
 
-  const onPressSignWithPassword = async () => {
-    await setAsyncStorageData(ACCESS_TOKEN, 'access_token');
+
+  const onPressSignWithPassword = async (e) => {
+    toast.show("Hello World",{
+      type:'success'
+    });
+    e.preventDefault();
+    await signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          currentUserAdd(auth.currentUser);
+          navigation.reset({
+            index: 0,
+            routes: [
+              {
+                name: StackNav.TabBar,
+              },
+            ],
+          });
+         /* navigate("/home")*/
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+        });
+    /*await setAsyncStorageData(ACCESS_TOKEN, 'access_token');
     navigation.reset({
       index: 0,
       routes: [
@@ -162,8 +196,11 @@ const Login = ({navigation}) => {
           name: StackNav.TabBar,
         },
       ],
-    });
+    });*/
+
   };
+
+
   const onPressPasswordEyeIcon = () => setIsPasswordVisible(!isPasswordVisible);
   const onPressSignUp = () => navigation.navigate(StackNav.Register);
   const onPressForgotPassword = () =>

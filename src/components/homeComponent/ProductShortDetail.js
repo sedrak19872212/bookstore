@@ -1,6 +1,7 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View, Alert} from 'react-native';
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {useToast} from "react-native-toast-notifications";
 
 // Custom Imports
 import CText from '../common/CText';
@@ -16,6 +17,7 @@ export default function ProductShortDetail(props) {
   const [isCart, setIsCart] = useState(false);
   const {item, index, onPress} = props;
 
+    const toast = useToast();
 
     const dispatch = useDispatch();
 
@@ -27,6 +29,13 @@ export default function ProductShortDetail(props) {
           quantity: 1
       }
       dispatch(addInCartAction(newItem));
+
+      toast.show("Successfully added to cart",{
+          type:'success',
+          placement: "top",
+          duration: 2000,
+          animationType: "zoom-in",
+      });
   }
 
   return (

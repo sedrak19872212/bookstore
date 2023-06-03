@@ -1,5 +1,5 @@
 // Library Imports
-import {StyleSheet, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Alert} from 'react-native';
 import React, {memo, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -126,44 +126,47 @@ const Register = ({navigation}) => {
 
   const dispatch = useDispatch();
   const currentUserAdd = (user)=> {
-    console.log("onPresssssssssssssssss",user)
     dispatch(currentUserAddAction(user));
   }
 
    const onPressSignWithPassword = async (e) => {
       e.preventDefault();
 
-      await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-          updateProfile(auth.currentUser, {
-            displayName: fullName
-          }).then(() => {
-            console.log('profile', auth.currentUser);
-            currentUserAdd(auth.currentUser);
-            navigation.reset({
-              index: 0,
-              routes: [{name: StackNav.TabBar}],
-            });
+     await createUserWithEmailAndPassword(auth, email, password)
+         .then((userCredential) => {
+           // Signed in
+           updateProfile(auth.currentUser, {
+             displayName: fullName
+           }).then(() => {
+             console.log('profile', auth.currentUser);
+             currentUserAdd(auth.currentUser);
+             navigation.reset({
+               index: 0,
+               routes: [{name: StackNav.TabBar}],
+             });
 
-          }).catch((error) => {
-            // An error occurred
-            // ...
-          });
-          //  console.log(user);
-
-
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-            // ..
-        });
+           }).catch((error) => {
+             // An error occurred
+             // ...
+           });
+           //  console.log(user);
 
 
-    }
+         })
+         .catch((error) => {
+           const errorCode = error.code;
+           if (errorCode == "auth/email-already-in-use") {
+             Alert.alert("The email address is already in use");
+           } else if (errorCode == "auth/invalid-email") {
+             Alert.alert("The email address is not valid.");
+           } else if (errorCode == "auth/operation-not-allowed") {
+             Alert.alert("Operation not allowed.");
+           } else if (errorCode == "auth/weak-password") {
+             Alert.alert("The password is too weak.");
+           }
+           //setPasswordError('gggggggggggg hhhhhhhhhhh');
+         });
+   }
 
 
   const onFocusFullName = () => onFocusInput(setFullNameInputStyle);

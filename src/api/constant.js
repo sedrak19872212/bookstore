@@ -24,7 +24,7 @@ const GenderData = [
 ];
 
 const ProfileSetting = [
-  {
+  /*{
     id: 1,
     title: strings.editProfile,
     icon: 'person-outline',
@@ -36,7 +36,7 @@ const ProfileSetting = [
     title: strings.address,
     icon: 'location-outline',
     route: StackNav.Address,
-  },
+  },*/
   {
     id: 2,
     title: strings.notification,

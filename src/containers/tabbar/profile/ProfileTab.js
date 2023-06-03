@@ -33,8 +33,17 @@ import images from '../../../assets/images';
 import {StackNav} from '../../../navigation/NavigationKeys';
 import LogOut from '../../../components/models/LogOut';
 import {removeUserDetail} from '../../../utils/asyncstorage';
+import {currentUserDeleteAction} from "../../../redux/action/currentUserDeleteAction";
+import {deleteAllItemsAction} from "../../../redux/action/deleteAllItemsAction";
 
 export default function ProfileTab({navigation}) {
+
+  const fullName = useSelector(state => state.user.user.displayName);
+  const email = useSelector(state => state.user.user.email);
+  const user = useSelector(state => state.user.user);
+  const items = useSelector(state => state.cart.itemsInCart);
+
+
   const color = useSelector(state => state.theme.theme);
   const language = useSelector(state => state?.profile?.language);
   const [isEnabled, setIsEnabled] = useState(!!color.dark);
@@ -76,6 +85,11 @@ export default function ProfileTab({navigation}) {
   const onPressLogOutBtn = () => LogOutSheetRef?.current?.show();
 
   const onPressYesLogOut = async () => {
+
+    dispatch(currentUserDeleteAction(user));
+    console.log('ppppppppppppppppOnPres');
+    dispatch(deleteAllItemsAction(items));
+
     try {
       await removeUserDetail(ACCESS_TOKEN);
       LogOutSheetRef?.current?.hide();
@@ -134,10 +148,10 @@ export default function ProfileTab({navigation}) {
         </TouchableOpacity>
         <View style={styles.mb20}>
           <CText type="b24" align={'center'}>
-            {'Andrew Ainsley'}
+            {/*{'Andrew Ainsley'}*/}{fullName}
           </CText>
           <CText type="m14" align={'center'} style={styles.mt10}>
-            {'andrew_ainsley@yourdomain.com'}
+            {/*{'andrew_ainsley@yourdomain.com'}*/}{email}
           </CText>
         </View>
         {ProfileSetting.map((item, index) => {

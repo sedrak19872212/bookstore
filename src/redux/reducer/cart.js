@@ -2,6 +2,7 @@ import {ADD_ITEM_IN_CART} from '../types';
 import {DELETE_ITEM_FROM_CART} from '../types';
 import {INCREMENT_QUANTITY} from '../types';
 import {DECREMENT_QUANTITY} from '../types';
+import {DELETE_All_ITEMS} from '../types';
 
 const INITIAL_STATE = {
   itemsInCart: [],
@@ -94,6 +95,12 @@ export default function (state = INITIAL_STATE, action) {
               ...state,
               itemsInCart: newCartDecrement,
           };
+      case DELETE_All_ITEMS:
+          console.log ('DeleteCarttttttttttttt',state);
+          return {
+              ...state,
+              itemsInCart: [],
+          }
     default:
       return state;
   }
