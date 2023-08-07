@@ -147,9 +147,7 @@ export default {
   generalNotification: 'General Notification',
   sound: 'Sound',
   vibrate: 'Vibrate',
-  specialOffers: 'Special Offers',
   promoAndDiscount: 'Promo and Discount',
-  payment: 'Payment',
   cashBack: 'Cash Back',
   appUpdate: 'App Update',
   newServiceAvailable: 'New Service Available',
@@ -223,7 +221,6 @@ export default {
   category5: "Children's & Young Adult Books",
   category6: 'Signed & Special Editions',
 
-  mostPopular: 'Most Popular',
   all: 'All',
 
   sold: 'sold',

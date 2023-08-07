@@ -11,22 +11,15 @@ import {ACCESS_TOKEN, getHeight, moderateScale} from '../../common/constants';
 import CHeader from '../../components/common/CHeader';
 import CSafeAreaView from '../../components/common/CSafeAreaView';
 
-import {  createUserWithEmailAndPassword, signInWithEmailAndPassword , updateProfile } from "firebase/auth";
+import {  createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import { auth } from '../../database/firebase';
 
-import {
-  Google_Icon,
-  Facebook_Icon,
-  Apple_Light,
-  Apple_Dark,
-} from '../../assets/svgs';
 import {StackNav} from '../../navigation/NavigationKeys';
 import CInput from '../../components/common/CInput';
 import KeyBoardAvoidWrapper from '../../components/common/KeyBoardAvoidWrapper';
-import {validateEmail, validatePassword} from '../../utils/validators';
+import {validateEmail, validatePassword, validateRegister} from '../../utils/validators';
 import CButton from '../../components/common/CButton';
-import {setAsyncStorageData} from '../../utils/helpers';
 
 import {currentUserAddAction} from '../../redux/action/currentUserAddAction';
 
@@ -42,21 +35,6 @@ const Register = ({navigation}) => {
   };
   const BlurredIconStyle = colors.grayScale5;
   const FocusedIconStyle = colors.textColor;
-
-  const socialIcon = [
-    {
-      icon: <Facebook_Icon />,
-      onPress: () => console.log('Facebook'),
-    },
-    {
-      icon: <Google_Icon />,
-      onPress: () => console.log('Google'),
-    },
-    {
-      icon: colors.dark === 'dark' ? <Apple_Light /> : <Apple_Dark />,
-      onPress: () => console.log('Apple'),
-    },
-  ];
 
   const [fullName, setFullName] = useState('');
 
@@ -155,16 +133,9 @@ const Register = ({navigation}) => {
          })
          .catch((error) => {
            const errorCode = error.code;
-           if (errorCode == "auth/email-already-in-use") {
-             Alert.alert("The email address is already in use");
-           } else if (errorCode == "auth/invalid-email") {
-             Alert.alert("The email address is not valid.");
-           } else if (errorCode == "auth/operation-not-allowed") {
-             Alert.alert("Operation not allowed.");
-           } else if (errorCode == "auth/weak-password") {
-             Alert.alert("The password is too weak.");
-           }
-           //setPasswordError('gggggggggggg hhhhhhhhhhh');
+           const {msg} = validateRegister(errorCode.trim());
+           setPasswordError(msg);
+
          });
    }
 
@@ -280,19 +251,6 @@ const Register = ({navigation}) => {
             onBlur={onBlurPassword}
             rightAccessory={() => <RightPasswordEyeIcon />}
           />
-
-         {/* <TouchableOpacity
-            onPress={() => setIsCheck(!isCheck)}
-            style={localStyles.checkboxContainer}>
-            <Ionicons
-              name={isCheck ? 'square-outline' : 'checkbox'}
-              size={moderateScale(26)}
-              color={colors.textColor}
-            />
-            <CText type={'s14'} style={styles.mh10}>
-              {strings.rememberMe}
-            </CText>
-          </TouchableOpacity>*/}
 
           <CButton
             title={strings.signUp}

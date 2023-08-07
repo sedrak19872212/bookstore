@@ -148,6 +148,9 @@ export default function WalletTab({navigation}) {
       />
     </CSafeAreaView>
   );
+
+
+
 }
 
 const localStyles = StyleSheet.create({

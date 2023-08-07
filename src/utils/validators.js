@@ -81,6 +81,47 @@ const validateEmail = email => {
   }
 };
 
+// Register error
+const validateRegister = errorCode => {
+  if (errorCode == "auth/email-already-in-use") {
+    return {
+      status: false,
+      msg: "The email address is already in use",
+    };
+  } else if (errorCode == "auth/invalid-email") {
+    return {
+      status: false,
+      msg: "The email address is not valid.",
+    };
+  } else if (errorCode == "auth/operation-not-allowed") {
+    return {
+      status: false,
+      msg: "Operation not allowed.",
+    };
+  } else if (errorCode == "auth/weak-password") {
+    return {
+      status: false,
+      msg: "The password is too weak.",
+    };
+  }
+};
+
+// Login error
+const validateLogin = errorCode => {
+  if (errorCode == "auth/user-not-found") {
+    return {
+      status: false,
+      msg: "User not found.",
+    };
+  } else if (errorCode == "auth/wrong-password") {
+    return {
+      status: false,
+      msg: "Wrong password.",
+    };
+  }
+};
+
+
 //Password validation
 const validatePassword = (pass, isConfrimPass, password) => {
   if (!pass) {
@@ -144,6 +185,8 @@ const validateConfirmPassword = (pass, password) => {
 export {
   validateEmail,
   validatePassword,
+  validateRegister,
+  validateLogin,
   validateConfirmPassword,
   validateName,
   validateCardNumber,

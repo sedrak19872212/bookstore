@@ -10,23 +10,16 @@ import { auth } from '../../database/firebase';
 import strings from '../../i18n/strings';
 import {styles} from '../../themes';
 import CText from '../../components/common/CText';
-import {ACCESS_TOKEN, getHeight, moderateScale} from '../../common/constants';
+import {getHeight, moderateScale} from '../../common/constants';
 import CHeader from '../../components/common/CHeader';
 import CSafeAreaView from '../../components/common/CSafeAreaView';
-import {
-  Google_Icon,
-  Facebook_Icon,
-  Apple_Light,
-  Apple_Dark,
-} from '../../assets/svgs';
 import {StackNav} from '../../navigation/NavigationKeys';
 import CInput from '../../components/common/CInput';
-import {validateEmail, validatePassword} from '../../utils/validators';
+import {validateEmail, validatePassword, validateLogin, validateRegister} from '../../utils/validators';
 import KeyBoardAvoidWrapper from '../../components/common/KeyBoardAvoidWrapper';
-import {setAsyncStorageData} from '../../utils/helpers';
 import CButton from '../../components/common/CButton';
 import {currentUserAddAction} from "../../redux/action/currentUserAddAction";
-import {useToast} from "react-native-toast-notifications";
+
 
 const Login = ({navigation}) => {
   const colors = useSelector(state => state.theme.theme);
@@ -41,21 +34,6 @@ const Login = ({navigation}) => {
 
   const BlurredIconStyle = colors.grayScale5;
   const FocusedIconStyle = colors.textColor;
-
-  const socialIcon = [
-    {
-      icon: <Facebook_Icon />,
-      onPress: () => console.log('Facebook'),
-    },
-    {
-      icon: <Google_Icon />,
-      onPress: () => console.log('Google'),
-    },
-    {
-      icon: colors.dark === 'dark' ? <Apple_Light /> : <Apple_Dark />,
-      onPress: () => console.log('Apple'),
-    },
-  ];
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -74,7 +52,6 @@ const Login = ({navigation}) => {
   const onFocusIcon = onHighlight => onHighlight(FocusedIconStyle);
   const onBlurInput = onUnHighlight => onUnHighlight(BlurredStyle);
   const onBlurIcon = onUnHighlight => onUnHighlight(BlurredIconStyle);
-  const toast = useToast();
 
   const dispatch = useDispatch();
   const currentUserAdd = (user)=> {
@@ -165,9 +142,6 @@ const Login = ({navigation}) => {
 
 
   const onPressSignWithPassword = async (e) => {
-    toast.show("Hello World",{
-      type:'success'
-    });
     e.preventDefault();
     await signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -185,26 +159,15 @@ const Login = ({navigation}) => {
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode, errorMessage)
+          const {msg} = validateLogin(errorCode.trim());
+          setPasswordError(msg);
         });
-    /*await setAsyncStorageData(ACCESS_TOKEN, 'access_token');
-    navigation.reset({
-      index: 0,
-      routes: [
-        {
-          name: StackNav.TabBar,
-        },
-      ],
-    });*/
 
   };
 
 
   const onPressPasswordEyeIcon = () => setIsPasswordVisible(!isPasswordVisible);
   const onPressSignUp = () => navigation.navigate(StackNav.Register);
-  const onPressForgotPassword = () =>
-    navigation.navigate(StackNav.ForgotPassword);
 
   return (
     <CSafeAreaView style={localStyles.root}>
@@ -253,19 +216,6 @@ const Login = ({navigation}) => {
             rightAccessory={() => <RightPasswordEyeIcon />}
           />
 
-          {/*<TouchableOpacity
-            onPress={() => setIsCheck(!isCheck)}
-            style={localStyles.checkboxContainer}>
-            <Ionicons
-              name={isCheck ? 'square-outline' : 'checkbox'}
-              size={moderateScale(26)}
-              color={colors.textColor}
-            />
-            <CText type={'s14'} style={styles.mh10}>
-              {strings.rememberMe}
-            </CText>
-          </TouchableOpacity>*/}
-
           <CButton
             title={strings.signIn}
             type={'S16'}
@@ -275,34 +225,22 @@ const Login = ({navigation}) => {
             bgColor={isSubmitDisabled && colors.disabledColor}
             disabled={isSubmitDisabled}
           />
-          <TouchableOpacity
-            onPress={onPressForgotPassword}
-            style={localStyles.forgotPasswordContainer}>
-            <CText
-              type={'s16'}
-              align={'center'}
-              // color={colors.primary}
-              style={styles.mh10}>
-              {strings.forgotPassword}
-            </CText>
-          </TouchableOpacity>
+
           <View style={localStyles.divider}>
             <View
-              style={[
-                localStyles.orContainer,
-                {backgroundColor: colors.bColor},
-              ]}
+                style={[
+                  localStyles.orContainer,
+                  {backgroundColor: colors.bColor},
+                ]}
             />
 
             <View
-              style={[
-                localStyles.orContainer,
-                {backgroundColor: colors.bColor},
-              ]}
+                style={[
+                  localStyles.orContainer,
+                  {backgroundColor: colors.bColor},
+                ]}
             />
           </View>
-
-
 
           <TouchableOpacity
             onPress={onPressSignUp}
